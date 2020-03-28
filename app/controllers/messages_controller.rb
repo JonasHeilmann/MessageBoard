@@ -46,16 +46,17 @@ class MessagesController < ApplicationController
   # Updates the found message with the provided parameters message_params
   def update
     respond_to do |format|
-      unless @message.user_id == current_user.id
+      if @message.user_id == current_user.id
+        if @message.update(message_params)
+          format.html { redirect_to message_path }
+          format.json { render json: { message: @message }, status: :accepted }
+        else
+          format.html { render 'edit' }
+          format.json { render json: { errors: @message.errors }, status: :not_acceptable }
+        end
+      else
         format.html { 'show' }
         format.json { render json: {}, status: :unauthorized }
-      end
-      if @message.update(message_params)
-        format.html { redirect_to message_path }
-        format.json { render json: { message: @message }, status: :accepted }
-      else
-        format.html { render 'edit' }
-        format.json { render json: { errors: @message.errors }, status: :not_acceptable }
       end
     end 
   end
