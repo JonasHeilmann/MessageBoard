@@ -1,0 +1,5 @@
+<%= simple_form_for @message do |f| %>
+  <%= f.input :title, placeholder: 'Title', required: true, error: 'A title is required. Please specify one.' %>
+  <%= f.input :description, placeholder: 'Description' %>
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>

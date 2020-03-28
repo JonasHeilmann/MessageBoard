@@ -1,0 +1,62 @@
+// Place all the styles related to the Messages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.messages {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow: scroll;
+  justify-content: space-evenly;
+  margin-bottom: -2em;
+  padding-bottom: 1em;
+}
+
+.message {
+  margin: 0 0 calc(3*0.8rem);
+  background: var(--color-white);
+  padding: 2em;
+  flex-grow: 1;
+  min-width: calc(50% - 2 * calc(3*0.8rem) + 2em);
+  border-radius: 0.8rem;
+  display: flex;
+  flex-direction: column;
+
+  .description {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: calc(0.8rem*2);
+  }
+
+  .view-message-btn {
+    padding: calc(1.5*0.8rem) 4em;
+    align-self: center;
+  }
+}
+
+@media (max-width: 1260px) {
+  .messages {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    padding: 0 2em;
+    margin: 0 -2em;
+  }
+
+  .message {
+    margin: 0 calc(1.5*0.8rem) calc(1.5*0.8rem) 0;
+    width: 125px;
+    min-width: unset;
+    flex-grow: unset;
+
+    .title {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .view-message-btn { 
+      padding: calc(1.5*0.8rem) calc(3*0.8rem);
+    }
+  }
+}

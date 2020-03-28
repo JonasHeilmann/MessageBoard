@@ -1,0 +1,17 @@
+<div class="main-view">
+  <div class="new-message-box">
+    <h1>Select a message from the list to show its details.</h1>
+    <% if user_signed_in? %>
+      <h2>You can also create a new message!</h2>
+      <div class="btns">
+        <%= link_to 'New Message', new_message_path, class: "btn btn-primary new-message-btn" %>
+      </div>
+    <% else %>
+      <h2>Log in or sign up to create a new message!</h2>
+      <div class="btns">
+        <%= link_to 'Log in', new_user_session_path, class: "btn btn-primary" %>
+        <%= link_to 'Sign up', new_user_registration_path, class: "btn" %>
+      </div>
+    <% end %>
+  </div>
+</div>

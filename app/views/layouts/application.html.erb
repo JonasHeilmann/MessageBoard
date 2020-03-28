@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MessageBoard</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="main-content">
+      <div class="left-side-content">
+        <nav>
+          <ul>
+            <% if user_signed_in? %>
+              <li><%= link_to 'New Message', new_message_path, class: "btn btn-primary" %></li>
+              <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: "btn" %></li>
+            <% else %>
+              <li><%= link_to 'Log in', new_user_session_path, class: "btn btn-primary" %></li>
+              <li><%= link_to 'Sign up', new_user_registration_path, class: "btn" %></li>
+            <% end %>
+          </ul>
+        </nav>
+        <%= render partial: "messages/messages", locals: {messages: @messages}%>
+        <div class="footer"></div>
+      </div>
+      <div class="right-side-content">
+        <div class="alert-holder">  
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
+        </div>
+        <%= yield %>  
+      </div>
+    </div>
+  </body>
+</html>

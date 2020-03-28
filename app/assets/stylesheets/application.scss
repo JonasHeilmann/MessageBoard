@@ -1,0 +1,239 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+body {
+  font-family: var(--font-stack-regular);
+  background: var(--color-purple-50);
+  font-size: calc(calc(0.8rem*2)*1.25);
+  padding: 0;
+  margin: 0;
+}
+
+.main-content {
+  position: absolute;
+  top: 5em;
+  bottom: 5em;
+  left: 5em;
+  right: 5em;
+  border-radius: 2em;
+  background: white;
+  display: flex;
+  flex-direction: row;
+  min-height: 500px;
+  border-radius: 2em;
+  overflow: hidden;
+}
+
+.left-side-content, .right-side-content {
+  padding: 2em;
+  position: relative;
+}
+
+.left-side-content {
+  background-color: var(--color-pink-50);
+  color: var(--color-purple-50);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-width: 450px;
+  width: 35%;
+}
+
+.right-side-content {
+  width: 65%;
+  background-color: var(--color-warm-grey-20);
+  color: var(--color-purple-50);
+  overflow: scroll;
+  position: relative;
+
+  .alert-holder {
+    position: absolute;
+    bottom: 0;
+    right: 2em;
+    left: 2em;
+  }
+}
+
+.main-view {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 2em);
+
+  .new-message-box {
+    align-self: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .btns {
+      margin: calc(3*0.8rem) auto;
+
+      .btn {
+        padding: calc(1.5*0.8rem) calc(3*0.8rem);
+        width: 5em;
+        margin: 0 1rem;
+      }
+
+      .new-message-btn {
+        padding: calc(1.5*0.8rem) 4em;
+      }
+    }
+  }
+}
+
+h1, h2, h3 {
+  font-family: var(--font-stack-bold);
+  margin: 0 0 calc(3*0.8rem);
+}
+
+h4, h5, h6 {
+  font-family: var(--font-stack-medium);
+  margin: 0 0 calc(1.5*0.8rem);
+}
+
+p {
+  margin: 0 0 calc(3*0.8rem);
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a, button, .btn, input[type=submit] {
+  font-family: var(--font-stack-medium);
+  text-decoration: none;
+  border-radius: 25rem;
+  border: none;
+  font-size: initial;
+  white-space: nowrap;
+  text-align: center;
+  cursor: pointer;
+  transition: all 300ms ease-in-out;
+}
+
+a:hover {
+  color: var(--color-orange-60);
+}
+
+.btn {
+  color: var(--color-black);
+  background: var(--color-white);
+  padding: calc(0.5*0.8rem) calc(1*0.8rem);
+
+  &:hover {
+    color: var(--color-black);
+    background: var(--color-warm-grey-10);
+  }
+}
+
+.btn-primary, input[type=submit] {
+  color: var(--color-white);
+  background: var(--color-orange-50);
+  padding: calc(1.5*0.8rem) calc(3*0.8rem);
+
+  &:hover {
+    color: var(--color-white);
+    background: var(--color-orange-60);
+  }
+}
+
+label, em {
+  color: var(--color-grey-60);
+  text-transform: uppercase;
+  font-size: calc(calc(0.8rem*2)*0.6875);
+}
+
+input[type=text], input[type=email], input[type=password], textarea {
+  border: 1px solid #ccc;
+  padding: .6em 1em .5em;
+  background: white;
+  font: 18px/100% var(--font-stack-regular);
+  font-weight: 300;
+  line-height: 1.4em;
+  word-spacing: .1em;
+  border-radius: 2px;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  box-sizing:border-box;
+  margin: 0 0 calc(3*0.8rem);
+}
+
+textarea {
+  height: 8em;
+}
+
+form, input[type=checkbox] {
+  margin: 0 0 calc(3*0.8rem);
+}
+
+nav {
+  position: absolute;
+  right: 2em;
+  padding: 0.5em 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin: 0 0 calc(3*0.8rem);
+  min-height: 30px;
+
+  ul {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .btn {
+    margin-left: 1em;
+    padding: calc(0.5*0.8rem) calc(1*0.8rem);
+  }
+}
+
+@media (max-width: 1260px) {
+  .main-content {
+    flex-direction: column;
+  }
+
+  .left-side-content, .right-side-content {
+    width: calc(100% - 4em);
+  }
+
+  .left-side-content {
+    min-width: unset;
+    display: block;
+    overflow: visible;
+  }
+
+  .right-side-content {
+    flex-grow: 1;
+  }
+}
+
+@media (max-width: 750px) {
+  .main-content {
+    flex-direction: column;
+    position: relative;
+    padding: 0;
+    top: unset;
+    bottom: unset;
+    left: unset;
+    right: unset;
+    border-radius: 0;
+    width: 100%;
+    min-height: 100vh;
+  }
+}
