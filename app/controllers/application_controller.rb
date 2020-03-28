@@ -15,6 +15,10 @@ class ApplicationController < ActionController::Base
     render json: { error: e.message }, status: :bad_request
   end
 
+  rescue_from ActiveRecord::RecordNotFound do |e|
+    render json: { error: e.message }, status: :not_found
+  end
+
   private
 
     # Migrates the DB before any action to allow in-memory db usage
