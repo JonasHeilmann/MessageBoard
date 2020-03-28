@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
     render json: { error: e.message }, status: :bad_request
   end
 
+  # Catches errors thrown due to records not found and forms a json with details on the issue
   rescue_from ActiveRecord::RecordNotFound do |e|
     render json: { error: e.message }, status: :not_found
   end

@@ -43,7 +43,7 @@ class MessagesController < ApplicationController
     respond_with(@message)
   end
 
-  # Updates the found message with the provided parameters message_params
+  # Updates the found message with the provided parameters message_params, responds with unauthorized if requesting user is not owner
   def update
     respond_to do |format|
       if @message.user_id == current_user.id
@@ -61,7 +61,7 @@ class MessagesController < ApplicationController
     end 
   end
 
-  # Destroys the found message and redirects to root
+  # Destroys the found message and redirects to root, responds with unauthorized if requesting user is not owner
   def destroy
     if @message.user_id == current_user.id
       @message.destroy
